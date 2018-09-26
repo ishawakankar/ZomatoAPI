@@ -1,4 +1,5 @@
 /* eslint react/prop-types: 0*/
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 
 class Footer extends React.Component {

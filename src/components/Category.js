@@ -1,6 +1,8 @@
 /* eslint react/jsx-filename-extension:0 */
 /* eslint react/prop-types: 0*/
-/*global localStorage alert: true */ 
+/* eslint react/jsx-filename-extension: 0 */
+/*global localStorage: true */ 
+
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -18,32 +20,32 @@ class AddTocategory extends React.Component {
         super(props);
         this.state = {
             open: false,
-            category_added: ""
+            categoryAdded: ""
         };
-        this.handleClickOpen = this.handleClickOpen.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.inputCategoryChange= this.inputCategoryChange.bind(this);
-        this.addNewCategory= this.addNewCategory.bind(this);
-        this.addRestaurantToExistingCat= this.addRestaurantToExistingCat.bind(this);
-        this.existingCategory= this.existingCategory.bind(this);
+        this.HandleOpen = this.HandleOpen.bind(this);
+        this.HandleClose = this.HandleClose.bind(this);
+        this.InputCategory= this.InputCategory.bind(this);
+        this.AddNewCategory= this.AddNewCategory.bind(this);
+        this.AddResExisting= this.AddResExisting.bind(this);
+        this.ExistingCategory= this.ExistingCategory.bind(this);
     }
 
-    handleClickOpen () {
+    HandleOpen () {
         this.setState({ open: true });
     };
 
-    handleClose () {
+    HandleClose () {
         this.setState({ open: false });
     };
 
-    inputCategoryChange (event) {
-        this.setState({ category_added: event.target.value });
+    InputCategory (event) {
+        this.setState({ categoryAdded: event.target.value });
     }
 
-    addNewCategory () { 
-        //console.log(this.state.category_added);
+    AddNewCategory () { 
+        //console.log(this.state.categoryAdded);
         const restaurantList = [];
-        const catName = this.state.category_added;
+        const catName = this.state.categoryAdded;
          // user input category 
         const resName = this.props.match.params.name;
          // restaurant name from route
@@ -55,25 +57,25 @@ class AddTocategory extends React.Component {
         } else {
             localStorage.setItem(catName, resName);
              // pushed restaurnt name in new category name 
-            alert(resName+" successfully added to "
-            +catName +". To see category details check click Show Category");
+            //alert(resName+" successfully added to "
+            //+catName +". To see category details check click Show Category");
         }
-        this.handleClose();
+        this.HandleClose();
     }
 
-    addRestaurantToExistingCat (categoryName) { 
+    AddResExisting (categoryName) { 
         const restaurantList = [];
         const resName = this.props.match.params.name;
          // restaurant name from route
         restaurantList.push(localStorage.getItem(categoryName));
         restaurantList.push(resName);
         localStorage.setItem(categoryName, restaurantList);
-        alert(resName+" successfully added to "
-        +categoryName +". To see category details check click Show Category");
+        //alert(resName+" successfully added to "
+        //+categoryName +". To see category details check click Show Category");
         
     }
 
-    existingCategory () {
+    ExistingCategory () {
         categoryList = [];
         for (let i = 0; i < localStorage.length; i+=1) {
            //lopp through local storage key value pair
@@ -85,7 +87,7 @@ class AddTocategory extends React.Component {
                     className="btn btn-primary"
                      key={v}
                       onClick={() => { 
-                        this.addRestaurantToExistingCat(localStorage.key(v)) }}>
+                        this.AddResExisting(localStorage.key(v)) }}>
                         {localStorage.key(v)}
                     </button> //key has category name 
                 );
@@ -97,25 +99,26 @@ class AddTocategory extends React.Component {
 
     render() {
         return (
+            <div className="container">
             <div className="card">
                 <div>Add {this.props.match.params.name} to : </div>
                 <div>
                   <br/><br/>
-                    <button className="btn btn-danger"
+                    <button className="btn btn-danger btn-set"
                      type="submit"
-                     onClick={this.handleClickOpen}>New Category</button>
+                     onClick={this.HandleOpen}>New Category</button>
                 </div>
                 <div>
                   <br/><br/>
                     <button type="submit"
-                    className="btn btn-danger"
-                    onClick={this.existingCategory}>Existing Category</button>
+                    className="btn btn-danger btn-set"
+                    onClick={this.ExistingCategory}>Existing Category</button>
                     <br/><br/>
                     {categoryList.map(data => data)}
                 </div>
                 <Dialog
                     open={this.state.open}
-                    onClose={this.handleClose}
+                    onClose={this.HandleClose}
                     aria-labelledby="form-dialog-title"
                 >
                     <DialogTitle id="form-dialog-title">
@@ -131,18 +134,19 @@ class AddTocategory extends React.Component {
                             // label="Enter category name"
                             type="text"
                             fullWidth
-                            onChange={this.inputCategoryChange}
+                            onChange={this.InputCategory}
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.HandleClose} color="primary">
                             Close
                         </Button>
-                        <Button onClick={this.addNewCategory} color="primary">
+                        <Button onClick={this.AddNewCategory} color="primary">
                             Add Category
                         </Button>
                     </DialogActions>
                 </Dialog>
+            </div>
             </div>
         );
     }

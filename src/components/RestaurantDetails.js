@@ -1,5 +1,6 @@
 /* eslint react/prop-types: 0*/ 
 /*global fetch: true*/
+/* eslint react/jsx-filename-extension: 0 */
 
 import React from 'react';
 
@@ -56,16 +57,17 @@ var url = `https://developers.zomato.com/api/v2.1/restaurant?res_id=${restaurant
 
             return (
 
-                <div>
+                <div className="container">
                     <div className="card">
-                        <img className="card-img-top" src={resDetails.thumb}
+                        <img className="card-img-top img-thumbnail" src={resDetails.thumb}
                          alt="Imge not found" />
                         <div className="card-body">
                             <h3 className="card-title">{resDetails.name}</h3>
-
+                            
                         </div>
                         <a href={resDetails.url} role="button"
-                         className="btn btn-danger">Visit Zomato website to order</a>
+                         className="btn btn-danger btn-set">
+                         Visit Zomato website to order</a>
                     </div>
 
                 </div>

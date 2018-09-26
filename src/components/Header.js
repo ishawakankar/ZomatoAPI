@@ -1,4 +1,7 @@
 /* eslint react/prop-types: 0*/
+/* eslint react/jsx-filename-extension: 0 */
+
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 
@@ -9,25 +12,32 @@ class Navbar extends React.Component {
                 <nav className="navbar navbar-fixed-top navbar-inverse">
                     <div className="container-fluid">
                         <ul className="nav navbar-nav">
-                        <li className="active"><a className="navbar-brand" href="/">Restaurants from Zomato</a></li>
+                        <li className="active"><a className="navbar-brand" href="/">
+                        Restaurants from Zomato</a></li>
                             <li><a href="/">Home</a></li>
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
-                        <Link className="restLink" to={`/Category_Collection`}>
-                        
+                        <Link className="restLink" to={`/Category-Collection`}>
+                        <button type="submit" className="btn btn-danger btn-lg">
+                        View Category
+                        </button>
                         </Link>
                         </ul>
                     </div>
                 </nav>
                 <br/><br/><br/>
                 <div className="jumbotron">
-                <img src="https://upload.wikimedia.org/wikipedia/en/6/64/Zomato_logo_%28white-on-red%29.png" alt="Hero section"/>
+                <img src=
+                "https://upload.wikimedia.org/wikipedia/en/6/64/Zomato_logo_%28white-on-red%29.png"
+                alt="Hero section"/>
                 
                 <div className=" form-inline">
                 <h2>Search for your favourite Restaurants</h2>
-                <input type="text" id="city" placeholder="Enter city" onMouseOut={this.props.getdata} onBlur=""/>
+                <input type="text" id="city" placeholder="Enter city"
+                 onMouseOut={this.props.getdata} onBlur=""/>
 
-                    <input type="text" id="name" placeholder="Restaurant Name" onChange={this.props.getdata} />
+                    <input type="text" id="name" placeholder="Restaurant Name"
+                     onChange={this.props.getdata} />
                     &nbsp;&nbsp;
                     <button type="submit" className="btn btn-danger"
                         onClick={this.props.gofetch}>Search</button>

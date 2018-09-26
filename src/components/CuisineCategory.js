@@ -1,6 +1,7 @@
 /* eslint react/jsx-filename-extension:0 */
+/*global localStorage: true*/
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
-import { Button } from '@material-ui/core';
 
 var listcat = []; //to store list of categories
 var lists = [];
@@ -8,34 +9,36 @@ class CategoryCollection extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            category_list: []
+            categoryList: []
         }
-        this.showCollection=this.showCollection.bind(this);
+        this.ShowCollection=this.ShowCollection.bind(this);
     }
 
     componentDidMount() {
         listcat = [];
-        for (var i = 0; i < localStorage.length; i++) {
+        for (var i = 0; i < localStorage.length; i+=1) {
             let v = i;
             listcat.push(
-                <Button key={v} onClick={() => this.showCollection(localStorage.key(v))}>
+                <button type="submit" 
+                className="btn btn-primary"
+                key={v} onClick={() => this.ShowCollection(localStorage.key(v))}>
                     {localStorage.key(v)}
-                </Button>
+                </button>
             )
         }
         this.setState({ // to re-render the component
 
         });
     }
-    showCollection = (keyValue) => {
+    ShowCollection (keyValue) {
         lists = [];
-        this.state.category_list = [];
-        this.state.category_list.push(localStorage.getItem(keyValue).split(','));
-        for (var i = 0; i < this.state.category_list[0].length; i++) {
+        this.state.categoryList = [];
+        this.state.categoryList.push(localStorage.getItem(keyValue).split(','));
+        for (var i = 0; i < this.state.categoryList[0].length; i+=1) {
             let v = i;
-            if (localStorage.key(i) != "loglevel:webpack-dev-server") {
+            if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
                 lists.push(
-                    <div key={v}>{this.state.category_list[0][v]}</div>
+                    <div key={v}>{this.state.categoryList[0][v]}</div>
                 );
             }
         }
@@ -46,7 +49,7 @@ class CategoryCollection extends React.Component {
     }
 
     render() {
-        const category_list = this.state.category_list;
+        //const categoryList = this.state.categoryList;
         return (
             <div>
                 <div>{listcat.map(data => data)}</div>

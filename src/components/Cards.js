@@ -1,4 +1,7 @@
 /* eslint react/prop-types: 0*/
+/* eslint react/jsx-filename-extension: 0 */
+
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 
@@ -6,6 +9,7 @@ class CardData extends React.Component {
 
   render() {
     return(
+      
       <div className="card">
         <img className="card-img-top" 
              src={this.props.card.restaurant.thumb} alt="Imge not found" />
@@ -19,19 +23,22 @@ class CardData extends React.Component {
               Rs.{this.props.card.restaurant.average_cost_for_two}
             </p>
         </div>
-        
+        <hr />
+        <div className="buttonbg">
         <Link className="restlink" 
-              to={`restaurant_details/${this.props.card.restaurant.id}`}>
-          <button type="button" className="btn btn-danger">Click to order</button> 
+              to={`restaurant-details/${this.props.card.restaurant.id}`}>
+          <button type="button" className="btn btn-danger btn-set">Click to order</button> 
         </Link>
         
             
-        <br /> <br />
+        <br />
         <Link className="restlink" 
-              to={`add_category/${this.props.card.restaurant.name}`}>
-          <button type="button" className="btn btn-danger">Add to category</button> 
+              to={`add-category/${this.props.card.restaurant.name}`}>
+          <button type="button" className="btn btn-danger btn-set">Add to category</button> 
         </Link>
+        </div>
       </div>
+      
   );
     }
 }

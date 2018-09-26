@@ -1,5 +1,6 @@
 /*global document: true*/
 /*eslint no-undef: "error"*/
+/* eslint react/jsx-filename-extension: 0 */
 
 import React from 'react';
 import ReactDOM from 'react-dom';

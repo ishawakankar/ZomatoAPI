@@ -1,6 +1,8 @@
 /* eslint react/prop-types: 0*/
+/* eslint react/jsx-filename-extension: 0 */
+
 import React from 'react';
-import CardData from './cards';
+import CardData from './Cards';
 
 class DisplayCards extends React.Component {
     
@@ -8,10 +10,10 @@ class DisplayCards extends React.Component {
         if(this.props.data.restaurants) {
         return (
             <div className="flex">
-            {this.props.data.restaurants.map(function (item)
+            {this.props.data.restaurants.map(function (restaurantItems)
             {
-                return (<CardData key={item.restaurant.id} 
-                                  card={item}></CardData>);
+                return (<CardData key={restaurantItems.restaurant.id} 
+                                  card={restaurantItems}></CardData>);
             })}
             </div>
         );

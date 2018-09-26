@@ -29,14 +29,16 @@ h2
     flex-wrap: wrap;
     display:flex;
     margin:2%;
+    justify-content: center;
 }
 .card
 {
     padding:1em;
     margin:2%;
-    width:20%;
+    width:350px;
     background-color: rgba(0,0,0,0.2);
     border-radius: 2%;
+    text-align: justify;
 }
 .card-img-top
 {
@@ -54,6 +56,45 @@ h3
     text-align: center;
     color:white;
     padding: 15px;
+}
+.navbar-brand
+{
+    font-family: 'Parisienne', cursive;
+    //font-stretch: expanded;
+    font-size: 30px;
+}
+.container
+{
+    padding-left:400px;
+    padding-right: 400px;
+    padding-top: 90px;
+    .card
+    {
+        
+        width: 98%;
+        height:50%;
+    }
+}
+.buttonbg
+{
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 2%;
+    padding: 5px;
+    margin-bottom: 3px;
+}
+.btn-set
+{
+    width:100%;
+}
+.btn-lg
+{
+    margin-top: 3px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+}
+.btn
+{
+    margin-top: 5px;
 }
 .jumbotron
 {

@@ -1,8 +1,11 @@
+/* eslint react/prop-types: 0*/
+/* eslint react/jsx-filename-extension: 0 */
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import RestaurantDetail from '../components/restaurantDetails';
-import AddCategory from '../components/addCategory';
 import App from '../components/App';
+import RestaurantDetail from '../components/RestaurantDetails';
+import categoryCollection from '../components/CuisineCategory';
+import addCategory from '../components/Category';
 
 const AppRouter = () =>
 (
@@ -10,8 +13,10 @@ const AppRouter = () =>
     <div>
         <Switch>
             <Route path="/" component={App} exact={true}/>
-            <Route path="/restaurant_details/:id" component={RestaurantDetail}/>
-            <Route path="/add_category/:name" component={AddCategory} />
+            <Route path="/restaurant-details/:id" component={RestaurantDetail}/>
+            <Route path="/add-category/:name" component={addCategory} />
+
+            <Route path="/Category-Collection" component={categoryCollection}/>
         </Switch>
     </div>
     </BrowserRouter>
